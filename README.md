@@ -78,20 +78,171 @@ forecasting-system/
 
 ---
 
-# 📈 Model Performance
+# ⚙️ Project Setup
 
-| Model | RMSE |
-|---|---|
-| LSTM | ~3.38M |
-| XGBoost | ~9.54M |
-| Prophet | ~23.29M |
-| SARIMA | ~27.05M |
+## 1. Clone Repository
 
-🏆 Best Model Selected: **LSTM**
+```bash
+git clone https://github.com/yourusername/ai-sales-forecasting-system.git
+```
 
 ---
 
-# ⚡ FastAPI Endpoints
+## 2. Move Into Project Folder
+
+```bash
+cd ai-sales-forecasting-system
+```
+
+---
+
+## 3. Create Virtual Environment
+
+### Mac/Linux
+
+```bash
+python3 -m venv venv
+```
+
+### Windows
+
+```bash
+python -m venv venv
+```
+
+---
+
+## 4. Activate Virtual Environment
+
+### Mac/Linux
+
+```bash
+source venv/bin/activate
+```
+
+### Windows
+
+```bash
+venv\\Scripts\\activate
+```
+
+---
+
+## 5. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# 📂 Dataset Setup
+
+Place the Excel dataset inside:
+
+```bash
+data/raw/
+```
+
+Example:
+
+```bash
+data/raw/sales.xlsx
+```
+
+---
+
+# 🧹 Run Data Preprocessing
+
+```bash
+python app/preprocessing/clean_data.py
+```
+
+This will:
+- handle missing dates
+- handle missing values
+- create cleaned dataset
+
+---
+
+# 🧠 Run Feature Engineering
+
+```bash
+python app/preprocessing/feature_engineering.py
+```
+
+This will generate:
+- lag features
+- rolling statistics
+- date-based features
+
+---
+
+# 🤖 Train Forecasting Models
+
+## XGBoost
+
+```bash
+python app/models/xgboost_model.py
+```
+
+---
+
+## SARIMA
+
+```bash
+python app/models/sarima_model.py
+```
+
+---
+
+## Prophet
+
+```bash
+python app/models/prophet_model.py
+```
+
+---
+
+## LSTM
+
+```bash
+python app/models/lstm_model.py
+```
+
+---
+
+# 🏆 Select Best Model
+
+```bash
+python app/services/model_selector.py
+```
+
+The system automatically compares RMSE values and selects the best model.
+
+---
+
+# ▶️ Run FastAPI Backend
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Server will start at:
+
+```bash
+http://127.0.0.1:8000
+```
+
+Swagger API Docs:
+
+```bash
+http://127.0.0.1:8000/docs
+```
+
+---
+
+# ⚡ API Endpoints
 
 ## Health Check
 
@@ -99,11 +250,15 @@ forecasting-system/
 /health
 ```
 
+---
+
 ## Best Model
 
 ```bash
 /best-model
 ```
+
+---
 
 ## Forecast API
 
@@ -119,35 +274,32 @@ Example:
 
 ---
 
-# 📊 Streamlit Dashboard
+# 📊 Run Streamlit Dashboard
 
-The project includes an interactive dashboard with:
-
-- Forecast charts
-- KPI metrics
-- AI insights
-- Downloadable CSV reports
-- State-wise prediction analysis
-
-Run dashboard:
+Open another terminal and run:
 
 ```bash
 streamlit run dashboard.py
 ```
 
+Dashboard URL:
+
+```bash
+http://localhost:8501
+```
+
 ---
 
-# ▶️ Run FastAPI Server
+# 📈 Model Performance
 
-```bash
-uvicorn app.main:app --reload
-```
+| Model | RMSE |
+|---|---|
+| LSTM | ~3.38M |
+| XGBoost | ~9.54M |
+| Prophet | ~23.29M |
+| SARIMA | ~27.05M |
 
-Swagger API Docs:
-
-```bash
-http://127.0.0.1:8000/docs
-```
+🏆 Best Model Selected: **LSTM**
 
 ---
 
